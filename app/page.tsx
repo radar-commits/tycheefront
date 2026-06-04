@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
+
+const ModelViewer = dynamic(() => import('./ModelViewer'), { ssr: false });
 
 type Platform = {
   name: string;
@@ -32,15 +35,8 @@ export default function Home() {
         padding: "100px",
         gap: 'var(--space-xl)',
       }}>
-        <div className="logo-float">
-          <Image
-            src="/Logo 5.jpg"
-            width={180}
-            height={180}
-            alt="Tychee"
-            style={{ objectFit: 'contain', width: '180px', height: 'auto' }}
-            priority
-          />
+        <div>
+          <ModelViewer />
         </div>
 
         <nav style={{

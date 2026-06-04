@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --fg: #370193;
-  --highlight: #7a40c8;
-  --highlight-soft: #7a40c8;
+  --bg: #5500ff;
+  --fg: #ffffff;
+  --highlight: #fff708;
+  --highlight-soft: #fff708;
   --fg-dim: #7a40c8;
   --fg-faint: #e8d9ff;
   --mono: 'IBM Plex Mono', monospace;
