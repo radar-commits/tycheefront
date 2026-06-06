@@ -147,3 +147,72 @@ body {
   flex-shrink: 0;
   display: block;
 }
+
+/* ── RELEASE BANNER ── */
+.release-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--fg-dim);
+  animation: fade-in 0.3s ease;
+}
+
+.release-banner__cover {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+.release-banner__body {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  min-width: 0;
+}
+
+.release-banner__label {
+  font-family: var(--display);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--highlight);
+}
+
+.release-banner__title {
+  font-family: var(--display);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.release-banner__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+}
+
+.release-banner__links a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.release-banner__links a:hover {
+  color: var(--highlight);
+}
