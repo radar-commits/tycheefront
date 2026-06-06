@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {client, urlFor, type SanityImageSource} from '../sanity/client';
 
 type ListenLink = {platform: string; url: string};
@@ -21,6 +21,8 @@ const LATEST_RELEASE_QUERY = `*[_type == "release" && defined(coverArt)]
 
 export default function ReleaseBanner() {
   const [release, setRelease] = useState<Release | null>(null);
+  const [open, setOpen] = useState(false);
+  const listenRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let active = true;
@@ -38,6 +40,18 @@ export default function ReleaseBanner() {
     };
   }, []);
 
+  // Close the dropdown when clicking outside it.
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (listenRef.current && !listenRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, [open]);
+
   if (!release) return null;
 
   const cover = urlFor(release.coverArt).width(160).height(160).fit('crop').url();
@@ -52,21 +66,39 @@ export default function ReleaseBanner() {
       <div className="release-banner__body">
         <span className="release-banner__label">New release</span>
         <span className="release-banner__title">{release.title}</span>
-        {links.length > 0 && (
-          <nav className="release-banner__links">
-            {links.map((link) => (
-              <a
-                key={`${link.platform}-${link.url}`}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.platform}
-              </a>
-            ))}
-          </nav>
-        )}
       </div>
+      {links.length > 0 && (
+        <div className="release-banner__listen" ref={listenRef}>
+          <button
+            type="button"
+            className="release-banner__listen-btn"
+            onClick={() => setOpen((o) => !o)}
+            aria-haspopup="true"
+            aria-expanded={open}
+          >
+            Listen now
+            <span className={`release-banner__caret${open ? ' is-open' : ''}`}>
+              ▾
+            </span>
+          </button>
+          {open && (
+            <ul className="release-banner__menu">
+              {links.map((link) => (
+                <li key={`${link.platform}-${link.url}`}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.platform}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </aside>
   );
 }

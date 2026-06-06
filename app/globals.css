@@ -157,7 +157,9 @@ body {
   z-index: 150;
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
   padding: var(--space-sm) var(--space-md);
   background: rgba(0, 0, 0, 0.18);
   backdrop-filter: blur(6px);
@@ -175,9 +177,10 @@ body {
 
 .release-banner__body {
   display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-md);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
   min-width: 0;
 }
 
@@ -197,22 +200,69 @@ body {
   color: var(--fg);
 }
 
-.release-banner__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm) var(--space-md);
+/* Listen now dropdown */
+.release-banner__listen {
+  position: relative;
+  flex-shrink: 0;
 }
 
-.release-banner__links a {
+.release-banner__listen-btn {
+  font-family: var(--display);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--highlight);
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: filter 0.2s;
+}
+
+.release-banner__listen-btn:hover {
+  filter: brightness(0.92);
+}
+
+.release-banner__caret {
+  display: inline-block;
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+.release-banner__caret.is-open {
+  transform: rotate(180deg);
+}
+
+.release-banner__menu {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--fg-dim);
+  padding: var(--space-xs) 0;
+  z-index: 160;
+  animation: fade-in 0.15s ease;
+}
+
+.release-banner__menu a {
+  display: block;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--fg-faint);
+  color: var(--fg);
   text-decoration: none;
-  transition: color 0.2s;
+  padding: var(--space-sm) var(--space-md);
+  transition: color 0.2s, background 0.2s;
 }
 
-.release-banner__links a:hover {
+.release-banner__menu a:hover {
   color: var(--highlight);
+  background: rgba(255, 255, 255, 0.06);
 }
