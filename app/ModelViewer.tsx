@@ -36,9 +36,10 @@ function Model() {
 export default function ModelViewer() {
   return (
     <Canvas
-      style={{ width: 500, height: 500 }}
+      style={{ width: 500, height: 500, background: 'transparent' }}
       camera={{ position: [0, 0, 5], fov: 45 }}
       gl={{ alpha: true }}
+      onCreated={({ gl }) => gl.setClearAlpha(0)}
     >
       <ambientLight intensity={1.5} />
       <directionalLight position={[5, 5, 5]} intensity={2} />

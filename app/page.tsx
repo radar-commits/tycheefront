@@ -5,7 +5,8 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReleaseBanner from './ReleaseBanner';
-import PixelTrailBackground from './PixelTrailBackground';
+import HomepageBackground from './HomepageBackground';
+import ArtistCredit from './ArtistCredit';
 
 const ModelViewer = dynamic(() => import('./ModelViewer'), { ssr: false });
 
@@ -31,7 +32,8 @@ export default function Home() {
     <>
       <ReleaseBanner />
 
-      <PixelTrailBackground />
+      <HomepageBackground />
+      <ArtistCredit />
 
       <main style={{
         display: 'flex',
@@ -55,6 +57,7 @@ export default function Home() {
           alignItems: 'center',
           gap: 'var(--space-lg)',
           pointerEvents: 'auto',
+          textShadow: '0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4)',
         }}>
           <button className="site-link" onClick={() => setListenOpen(true)}>
             Listen

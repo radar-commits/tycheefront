@@ -28,6 +28,7 @@ body {
   font-size: 14px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* ── SITE LINKS ── */
@@ -242,7 +243,7 @@ body {
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg-dim);
+  color: var(--fg);
   text-decoration: none;
   margin-top: var(--space-lg);
   transition: color 0.2s;
@@ -253,11 +254,32 @@ body {
   color: var(--highlight);
 }
 
-/* ── PIXEL TRAIL BACKGROUND ── */
-.pixel-trail-bg {
+/* ── GRID DISTORTION BACKGROUND ── */
+.grid-distortion-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
+}
+
+/* ── ARTIST CREDIT ── */
+.artist-credit {
+  position: fixed;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  z-index: 10;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.artist-credit:hover {
+  color: var(--fg);
 }
 
 /* ── RELEASE BANNER ── */
