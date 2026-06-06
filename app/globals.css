@@ -148,6 +148,111 @@ body {
   display: block;
 }
 
+/* ── COMING SOON ── */
+.coming-soon {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  position: relative;
+  z-index: 1;
+  /* let the pixel trail behind track the cursor; re-enabled on interactive bits */
+  pointer-events: none;
+}
+
+.coming-soon__label {
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--highlight);
+}
+
+.coming-soon__title {
+  font-family: var(--display);
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.coming-soon__text {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg-faint);
+  max-width: 420px;
+}
+
+.notify-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 440px;
+  margin-top: var(--space-md);
+  pointer-events: auto;
+}
+
+.notify-form__input {
+  flex: 1 1 220px;
+  background: #ffffff;
+  color: var(--bg);
+  border: none;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+  outline: none;
+}
+
+.notify-form__input::placeholder {
+  color: var(--fg-dim);
+}
+
+.notify-form__input:focus {
+  box-shadow: 0 0 0 2px var(--highlight);
+}
+
+.notify-form__btn {
+  font-family: var(--display);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--highlight);
+  border: none;
+  cursor: pointer;
+  padding: 12px 20px;
+  transition: filter 0.2s;
+}
+
+.notify-form__btn:hover {
+  filter: brightness(0.92);
+}
+
+.coming-soon__back {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  text-decoration: none;
+  margin-top: var(--space-lg);
+  transition: color 0.2s;
+  pointer-events: auto;
+}
+
+.coming-soon__back:hover {
+  color: var(--highlight);
+}
+
 /* ── PIXEL TRAIL BACKGROUND ── */
 .pixel-trail-bg {
   position: fixed;

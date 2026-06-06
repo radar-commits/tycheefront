@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import Link from 'next/link';
 import ReleaseBanner from './ReleaseBanner';
+import PixelTrailBackground from './PixelTrailBackground';
 
 const ModelViewer = dynamic(() => import('./ModelViewer'), { ssr: false });
-const PixelTrail = dynamic(() => import('./PixelTrail'), { ssr: false });
 
 type Platform = {
   name: string;
@@ -30,16 +31,7 @@ export default function Home() {
     <>
       <ReleaseBanner />
 
-      <div className="pixel-trail-bg" aria-hidden="true">
-        <PixelTrail
-          gridSize={50}
-          trailSize={0.05}
-          maxAge={250}
-          interpolate={5}
-          color="#fff708"
-          gooeyFilter={{ id: 'custom-goo-filter', strength: 2 }}
-        />
-      </div>
+      <PixelTrailBackground />
 
       <main style={{
         display: 'flex',
@@ -68,7 +60,7 @@ export default function Home() {
             Listen
           </button>
           <a href="#" className="text-20px site-link">Watch</a>
-          <a href="#" className="site-link">Shop</a>
+          <Link href="/shop" className="site-link">Shop</Link>
         </nav>
       </main>
 
