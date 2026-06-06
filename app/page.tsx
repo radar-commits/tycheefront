@@ -6,6 +6,7 @@ import Image from 'next/image';
 import ReleaseBanner from './ReleaseBanner';
 
 const ModelViewer = dynamic(() => import('./ModelViewer'), { ssr: false });
+const PixelTrail = dynamic(() => import('./PixelTrail'), { ssr: false });
 
 type Platform = {
   name: string;
@@ -29,6 +30,17 @@ export default function Home() {
     <>
       <ReleaseBanner />
 
+      <div className="pixel-trail-bg" aria-hidden="true">
+        <PixelTrail
+          gridSize={50}
+          trailSize={0.05}
+          maxAge={250}
+          interpolate={5}
+          color="#fff708"
+          gooeyFilter={{ id: 'custom-goo-filter', strength: 2 }}
+        />
+      </div>
+
       <main style={{
         display: 'flex',
         flexDirection: 'column',
@@ -37,6 +49,9 @@ export default function Home() {
         height: '90vh',
         padding: "100px",
         gap: 'var(--space-xl)',
+        position: 'relative',
+        zIndex: 1,
+        pointerEvents: 'none',
       }}>
         <div>
           <ModelViewer />
@@ -47,6 +62,7 @@ export default function Home() {
           flexDirection: 'column',
           alignItems: 'center',
           gap: 'var(--space-lg)',
+          pointerEvents: 'auto',
         }}>
           <button className="site-link" onClick={() => setListenOpen(true)}>
             Listen

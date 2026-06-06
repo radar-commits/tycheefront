@@ -148,6 +148,13 @@ body {
   display: block;
 }
 
+/* ── PIXEL TRAIL BACKGROUND ── */
+.pixel-trail-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
 /* ── RELEASE BANNER ── */
 .release-banner {
   position: fixed;
