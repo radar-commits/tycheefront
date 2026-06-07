@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import type {Metadata} from 'next';
-import PixelTrailBackground from '../PixelTrailBackground';
 
 export const metadata: Metadata = {
   title: 'Shop — Coming soon | tychee',
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 export default function ShopPage() {
   return (
     <>
-      <PixelTrailBackground />
-
       <main className="coming-soon">
       <span className="coming-soon__label">Shop</span>
       <h1 className="coming-soon__title">Coming soon</h1>
